@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -33,36 +33,36 @@ const Nav = () => {
                 />
                 <p className="logo_text"> AI Prompts </p>
             </Link>
-            {/* mobile navigation */}
+
             <div className="sm:flex hidden">
                 {isUserLogged ? (
                     <div className="flex gap-3 md:gap-5">
-                        <Link 
+                        <Link
                             href="/create-prompt"
                             className="black_btn"
                         >
                             Create Post
                         </Link>
-                        <button 
-                            type="button" 
+                        <button
+                            type="button"
                             onClick={signOut}
                             className="outline_btn"
                         >
                             Sign Out
                         </button>
                         <Link href="/profile">
-                            <Image 
-                                src="/assets/images/profile.svg"
+                            <Image
+                                src="/assets/images/logo.svg"
                                 width={40}
                                 height={40}
-                                className="rounded-full object-contain"
+                                className="rounded-full"
                                 alt="profile"
                             />
                         </Link>
                     </div>
-                 ) : (
+                ) : (
                     <>
-                        {providers && 
+                        {providers &&
                             Object.values(providers).map((provider) => (
                                 <button
                                     type="button"
@@ -75,8 +75,10 @@ const Nav = () => {
                             ))
                         }
                     </>
-                 )}
-                 <div className="sm:hidden flax relative">
+                )}
+            </div>
+                 {/*mobile*/}
+                 <div className="sm:hidden flex relative">
                         {isUserLogged ? (
                             <div className="flex">
                                 <Image
@@ -85,20 +87,37 @@ const Nav = () => {
                                     height={40}
                                     className="rounded-full"
                                     alt="profile" 
-                                    onClick={ () => setToggleDropdown((prev) => !prev)}
+                                    onClick={ () => setToggleDropdown(!toggleDropdown) }
                                 />
                                 {toggleDropdown && ( 
-                                    <div className="dropdown">
-                                        <Link
-                                            href="/profile"
-                                            className="dropdown_link"
-                                            onClick={() => setToggleDropdown(false)}
-                                        >
-                                            My Profile
-                                        </Link>
-                                    </div>
-                                )}
-                            </div>
+                                <div className="dropdown">
+                                    <Link
+                                        href="/profile"
+                                        className="dropdown_link"
+                                        onClick={() => setToggleDropdown(false)}
+                                    >
+                                        My Profile
+                                    </Link>
+                                    <Link
+                                        href="/create-prompt"
+                                        className="dropdown_link"
+                                        onClick={() => setToggleDropdown(false)}
+                                    >
+                                        Create Prompt
+                                    </Link>
+                                    <button
+                                        type='button'
+                                        onClick={() => {
+                                            setToggleDropdown(false)
+                                            signOut()
+                                        }}
+                                        className='mt-5 w-full black_btn'
+                                    >
+                                        Sign Out
+                                    </button>
+                                </div>
+                            )}
+                        </div>
                         ):(
                         <>
                             {providers &&
@@ -116,7 +135,6 @@ const Nav = () => {
                         </>
                     )}
                  </div>
-            </div>
         </nav>        
     )
 }
