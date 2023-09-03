@@ -7,6 +7,8 @@ import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
 
 const Nav = () => {
+    const { data: session } = useSession();
+
     const isUserLogged = true;
     const [providers, setProviders] = useState(null);
     const [toggleDropdown, setToggleDropdown] = useState(false);
@@ -34,8 +36,9 @@ const Nav = () => {
                 <p className="logo_text"> AI Prompts </p>
             </Link>
 
+
             <div className="sm:flex hidden">
-                {isUserLogged ? (
+                {session?.user ? (
                     <div className="flex gap-3 md:gap-5">
                         <Link
                             href="/create-prompt"
@@ -79,7 +82,7 @@ const Nav = () => {
             </div>
                  {/*mobile*/}
                  <div className="sm:hidden flex relative">
-                        {isUserLogged ? (
+                        {session?.user ? (
                             <div className="flex">
                                 <Image
                                     src="/assets/images/logo.svg"
