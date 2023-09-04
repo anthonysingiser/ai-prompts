@@ -1,8 +1,11 @@
-const Form = () => {
+import Link from 'next/link';
+
+
+const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
     return (
-        <div>
-            <h1>Form</h1>
-        </div>        
+        <section>
+            
+        </section>     
     )
 }
 
