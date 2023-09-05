@@ -45,6 +45,7 @@ const Nav = () => {
                         >
                             Create Post
                         </Link>
+
                         <button
                             type="button"
                             onClick={signOut}
@@ -52,6 +53,7 @@ const Nav = () => {
                         >
                             Sign Out
                         </button>
+
                         <Link href="/profile">
                             <Image
                                 src={session?.user.image}
@@ -89,7 +91,7 @@ const Nav = () => {
                                     height={40}
                                     className="rounded-full"
                                     alt="profile" 
-                                    onClick={ () => setToggleDropdown(!toggleDropdown) }
+                                    onClick={ () => setToggleDropdown((prev) => !prev) }
                                 />
                                 {toggleDropdown && ( 
                                 <div className="dropdown">
@@ -108,12 +110,12 @@ const Nav = () => {
                                         Create Prompt
                                     </Link>
                                     <button
-                                        type='button'
+                                        type="button"
                                         onClick={() => {
                                             setToggleDropdown(false)
                                             signOut()
                                         }}
-                                        className='mt-5 w-full black_btn'
+                                        className="mt-5 w-full black_btn"
                                     >
                                         Sign Out
                                     </button>
@@ -127,7 +129,9 @@ const Nav = () => {
                                     <button
                                         type="button"
                                         key={provider.name}
-                                        onClick={() => signIn(provider.id)}
+                                        onClick={() => {
+                                            signIn(provider.id)
+                                        }}
                                         className="black_btn"
                                     >
                                         Sign In
