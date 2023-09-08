@@ -15,7 +15,7 @@ const handler = NextAuth ({
             const sessionUser = await User.findOne({ email: session.user.email })
             session.user.id = sessionUser._id.toString();
 
-            return session;
+            return session
         },
 
         async signIn({ profile }) {
@@ -31,10 +31,11 @@ const handler = NextAuth ({
                         image: profile.picture,
                     })
                 }
+                return true
                 
                 } catch (error){
-                    console.log(error)
-                    return false;
+                    console.log('Error checking user: ', error.message)
+                    return false
                 }   
         },
     }
