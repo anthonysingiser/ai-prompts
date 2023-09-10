@@ -1,4 +1,6 @@
-import { Schema, model, models } from 'mongoose';
+import { mongoose, model, models } from 'mongoose';
+
+const Schema = mongoose.Schema
 
 const PromptSchema = new Schema({
     creator: {

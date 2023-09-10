@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState, useEffect } from 'react';
 import PromptCard from './PromptCard';
@@ -9,7 +9,7 @@ const PromptCardList = ({ data, handleTagClick }) => {
         <div className="mt-16 prompt_layout">
             {data.map((post) => (
                 <PromptCard
-                    key={post.id}
+                    key={post._id}
                     post={post}
                     handleTagClick={handleTagClick()}
                 />
@@ -30,6 +30,8 @@ const Feed = () => {
         const fetchPosts = async () => {
             const response = await fetch('/api/prompt')
             const data = await response.json()
+       
+            setPosts(data)
         }
 
         fetchPosts()
@@ -40,13 +42,12 @@ const Feed = () => {
             <form className="relative w-full flex-center">
                 <input 
                     type="text"
-                    placeholder="Search for a tag"
+                    placeholder="Search for a tag or prompt"
                     value={searchText}
                     onChange={handleSearchChange}
                     required
                     className="search_input peer"
                 />
-
             </form>
 
             <PromptCardList
