@@ -64,4 +64,3 @@ export const DELETE = async (request, { params }) => {
         
     }
 }
-
