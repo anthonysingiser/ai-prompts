@@ -11,7 +11,7 @@ const PromptCardList = ({ data, handleTagClick }) => {
                 <PromptCard
                     key={post._id}
                     post={post}
-                    handleTagClick={handleTagClick()}
+                    handleTagClick={handleTagClick}
                 />
             ))}
         </div>
@@ -81,7 +81,7 @@ const Feed = () => {
             </form>
             {searchText ? (
                 <PromptCardList
-                    data={posts}
+                    data={searchedResults}
                     handleTagClick={handleTagClick}                
                 />
             ):(
