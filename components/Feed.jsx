@@ -53,15 +53,22 @@ const Feed = () => {
 
         setSearchTimeout(
             setTimeout(() => {
-                const searchResult = filterPropmts(e.target.value)
+                const searchResult = filterPrompts(e.target.value)
                 setSearchedResults(searchResult)
             }, 500)
         )
     }
 
+    const handleTagClick = (tagName) => {
+        setSearchText(tagName)
+
+        const searchResult = filterPrompts(tagName)
+        setSearchedResults(searchResult)
+    }
+
 
     return (
-        <section>
+        <section className='feed'>
             <form className="relative w-full flex-center">
                 <input 
                     type="text"
@@ -72,11 +79,17 @@ const Feed = () => {
                     className="search_input peer"
                 />
             </form>
-
-            <PromptCardList
-                data={posts}
-                handleTagClick={() => {}}                
-            />
+            {searchText ? (
+                <PromptCardList
+                    data={posts}
+                    handleTagClick={handleTagClick}                
+                />
+            ):(
+                <PromptCardList
+                    data={posts}
+                    handleTagClick={handleTagClick}
+                />
+            )}
         </section>        
     )
 }
