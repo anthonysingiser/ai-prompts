@@ -37,7 +37,7 @@ const Feed = () => {
     }, [])
 
     const filterPrompts = (searchText) => {
-        const regex = new RegExp(searchtext, "i")
+        const regex = new RegExp(searchText, "i")
         return posts.filter(
             (item) => 
                 regex.test(item.creator.username) ||
