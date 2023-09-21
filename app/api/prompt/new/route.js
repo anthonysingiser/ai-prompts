@@ -1,7 +1,7 @@
 import { connectToDB } from "@utils/database";
 import Prompt from "@models/prompt";
 
-export const POST = async (req, res) => {
+export const POST = async (req) => {
 
     const {userId, prompt, tag} = await req.json();
 
@@ -15,9 +15,11 @@ export const POST = async (req, res) => {
 
         await newPrompt.save();
 
-        return new Response(JSON.stringify(newPrompt), {status: 201})
+        return new Response(JSON.stringify(newPrompt), {
+            status: 201})
         
     } catch (error) {
-        return new Response(JSON.stringify({msg: error.message}), {status: 500})
+        return new Response(JSON.stringify({msg: error.message}), {
+            status: 500})
     }
 }
