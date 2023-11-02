@@ -10,7 +10,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
                 </span>
             </h1>
             <p className="desc text-left max-w-md">
-                {type} and share generated prompts with the world.
+                {type} and share prompts with the world.
             </p>
 
             <form
@@ -21,7 +21,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
                     <span
                         className="font-satoshi font-semibold text-base text-gray-700"
                     >
-                        Your AI generated prompt
+                        Your AI prompt
                     </span>
                     <textarea
                         value={post.prompt}
@@ -38,7 +38,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
                     >
                         Prompt Field
                         <span className="font-normal">
-                            (#goodideas, #inspiration, #creativity, #writing, #prompt)
+                            (#funny, #inspiration, #creativity, #coolpicture)
                         </span>
                     </span>
                     <input

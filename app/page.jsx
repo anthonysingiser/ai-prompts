@@ -7,11 +7,11 @@ const Home = () => {
             Discover and Share
             <br className="max-md:hidden"/>
             <span className="orange_gradient text-center"> 
-                AI-Powered Prompts
+            Prompts with the world
             </span>
            </h1>
            <p className="desc text-center">
-            A collection of AI-generated prompts for creative writing.
+            A collection of prompts for AI.
            </p>
            <Feed />
         </section>
